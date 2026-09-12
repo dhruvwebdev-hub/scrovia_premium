@@ -1,0 +1,10 @@
+const menuBtn=document.getElementById("menuBtn");const navLinks=document.getElementById("navLinks");
+menuBtn.addEventListener("click",()=>{navLinks.classList.toggle("active");if(navLinks.classList.contains("active")){menuBtn.classList.remove("fa-bars");menuBtn.classList.add("fa-xmark")}else{menuBtn.classList.add("fa-bars");menuBtn.classList.remove("fa-xmark")}});
+document.querySelectorAll(".nav-links a").forEach(link=>link.addEventListener("click",()=>{navLinks.classList.remove("active");menuBtn.classList.add("fa-bars");menuBtn.classList.remove("fa-xmark")}));
+const reveals=document.querySelectorAll(".reveal");const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("active")})},{threshold:.12});reveals.forEach(el=>observer.observe(el));
+document.querySelectorAll(".wishlist").forEach(button=>button.addEventListener("click",()=>{button.classList.toggle("active");const icon=button.querySelector("i");icon.classList.toggle("fa-regular");icon.classList.toggle("fa-solid")}));
+let cartItems=0;const cartCount=document.getElementById("cartCount"),toast=document.getElementById("toast");
+document.querySelectorAll(".quick-add").forEach(button=>button.addEventListener("click",()=>{cartItems++;cartCount.textContent=cartItems;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),2200)}));
+document.getElementById("newsletterForm").addEventListener("submit",e=>{e.preventDefault();document.getElementById("newsletterMessage").textContent="Welcome to the Scrovia family ✨";e.target.reset()});
+document.querySelector(".contact-form").addEventListener("submit",e=>{e.preventDefault();alert("Thank you! Your message has been received. ✨");e.target.reset()});
+const header=document.querySelector("header");window.addEventListener("scroll",()=>{if(window.scrollY>70){header.style.position="fixed";header.style.top="0";header.style.background="rgba(34,23,19,.96)";header.style.backdropFilter="blur(12px)"}else{header.style.position="absolute";header.style.background="transparent";header.style.backdropFilter="none"}});
